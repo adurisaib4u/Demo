@@ -10,6 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1 (6dec05d9-44f6-44d4-b3b6-aec600077f52)'
+    appType: 'webAppLinux'
+    WebAppName: 'sample-webappdemo'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
